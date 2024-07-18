@@ -1,7 +1,7 @@
 ### <a href="https://georges034302.github.io/threejs-toy-demo/">GUI Control Toy</a>
-![toy-gif](https://github.com/user-attachments/assets/d01d2f4b-9b89-4562-beef-b87737f86266)
 
-<img src="https://github.com/user-attachments/assets/d01d2f4b-9b89-4562-beef-b87737f86266" width="200" height="400" />
+<img src="https://github.com/user-attachments/assets/d01d2f4b-9b89-4562-beef-b87737f86266" width="300" height="300" />
+
 Three JS demo: GUI control and object animation
 The project is a THREE JS project hosted on GitHub.io
 

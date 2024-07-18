@@ -19,5 +19,6 @@
   "homepage": "https://github.com/Georges034302/threejs-toy-demo#readme",
   "dependencies": {
     "@types/three": "^0.166.0"
-  }
+  },
+  "devDependencies": {}
 }

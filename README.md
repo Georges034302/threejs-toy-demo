@@ -1,17 +1,16 @@
 ## threejs-toy-demo
-Three JS demo using PLYLoader, Raycaster and OrbitControls
+Three JS demo: GUI control and object animation
+The project is a THREE JS project hosted on GitHub.io
 
-* Object is loaded from models using PLYLoader and added to the scene
-* Mouse object-select is animated and enabled using Raycaster
-  * Object-mouse intersection is determine using Raycaster
-  * New object position is determined using mouse-pointer position
-  * OrbitControls is enabled for the perspective camera and added to the renderer DOM tree
+* Create a GUI control menu (to control color and velocity of the mesh)
+* Add a sphere above the scene and animate the sphere to bounce in the center of the mesh
 
 ### Required THREE packages (to be added to the HTML)
 
 ```
-    <script src="js/three.js"></script>
-    <script src="js/OrbitControls.js"> </script>
-    <script src="js/PLYLoader.js"></script>
+    <script src="packages/three.js"></script>
+    <script src="packages/three.min.js"></script>
+    <script src="packages/OrbitControls.js"> </script>
+    <script src="packages/dat.gui.min.js"></script>
 ```
 

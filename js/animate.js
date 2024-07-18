@@ -1,36 +1,57 @@
-/* global THREE, cube, scene, camera, renderer */
+/* global subd, THREE, size, scene, material_tissue, dat */
+var interval = 0.05;
+var velocity = 0.1;
+var heightWave = 0.05;
+var period = 20;
+var clock = new THREE.Clock();
+var time = 0;
+var delta = 0;
+
 
 function animate() {
-    renderer.render(scene, camera);
-    controls.update();
-    requestAnimationFrame(animate);
-}
-
-//Define a function to select and move the PLY
-var rayCaster = new THREE.Raycaster();
-var selectedObj = false;
-
-function onDocumentMouseDown(event) {
-    var mouse = new THREE.Vector2;
-    mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
-    mouse.y = -(event.clientY / renderer.domElement.clientHeight) * 2 + 1;
-
-    rayCaster.setFromCamera(mouse, camera);
-    var intersects = rayCaster.intersectObjects(scene.children, false);
-
-    if (intersects.length > 0) {
-        if ((intersects[0].object.name === "loaded_mesh") && !selectedObj) {
-            console.log("Mesh Selected");
-            mesh.material.color = new THREE.Color(1, 1, 0.5);
-            selectedObj = true;
-        }
-        if ((intersects[0].object.name !== "loaded_mesh") && selectedObj) {
-            mesh.material.color = new THREE.Color(0.6, 0.2, 0.4);
-            var pos = intersects[0].point;
-            console.log("Mesh placed");
-            mesh.position.x = pos.x;
-            mesh.position.y = pos.y;
-            selectedObj = false;
-        }
+    interval += velocity;
+    let pos = tissue.geometry.getAttribute('position');
+    for (let i = 0; i < pos.count; i++) {
+        let currP = new THREE.Vector3();
+        currP.x = pos.getX(i);
+        currP.y = pos.getY(i);
+        currP.z = pos.getZ(i);
+        let len = period * currP.length() / size;
+        currP.z = heightWave * size * Math.cos(len + interval);
+        pos.setZ(i, currP.z);
     }
+    pos.needsUpdate = true
+    tissue.geometry.computeVertexNormals();
 }
+
+var gui;
+
+function buildGui() {
+    gui = new dat.GUI();
+    var params = {
+        color: material_tissue.color.getHex(),
+        velocity_tissue: velocity
+    }
+    gui.addColor(params, 'color').onChange(function(val) {
+        material_tissue.color.setHex(val);
+    });
+    gui.add(params, 'velocity_tissue', 0, 0.5).onChange(function(val) {
+        velocity = val;
+    });
+    gui.open();
+}
+
+function bounce(object) {
+    delta = clock.getDelta();
+    time += delta;
+    object.position.z = 1.5 + Math.abs(Math.sin(time * 3)) * 2;
+}
+
+//final update loop
+var updateLoop = function() {
+    bounce(sphere);
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(updateLoop);
+    animate();
+};

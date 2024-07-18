@@ -1,7 +1,7 @@
 {
   "name": "threejs-toy-demo",
   "version": "1.0.0",
-  "description": "Three JS demo using PLYLoader, Raycaster and OrbitControls",
+  "description": "Three JS demo using GUI Controls and OrbitControls",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

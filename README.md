@@ -1,4 +1,4 @@
-### <a href="https://georges034302.github.io/threejs-toy-demo/" target="_blank" rel="noopener noreferrer">GUI Control Toy</a>
+### <a href="https://georges034302.github.io/threejs-toy-demo/">GUI Control Toy</a>
 Three JS demo: GUI control and object animation
 The project is a THREE JS project hosted on GitHub.io
 

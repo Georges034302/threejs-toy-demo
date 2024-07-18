@@ -1,8 +1,6 @@
-## threejs-toy-demo
+## <a href="https://georges034302.github.io/threejs-toy-demo/" target="_blank">GUI Control Toy</a>
 Three JS demo: GUI control and object animation
 The project is a THREE JS project hosted on GitHub.io
-
-### Project Website: https://georges034302.github.io/threejs-toy-demo
 
 * Create a GUI control menu (to control color and velocity of the mesh)
 * Add a sphere above the scene and animate the sphere to bounce in the center of the mesh
